@@ -1,0 +1,21 @@
+name: Append Date
+
+on:
+  schedule:
+    - cron: '0 6 * * *'  # 6:00 AM UTC every day
+
+jobs:
+  append_date:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - run: python append_date.py
+      - run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add dates.txt
+          git commit -m "Logged date $(date +'%Y-%m-%d')"
+          git push
