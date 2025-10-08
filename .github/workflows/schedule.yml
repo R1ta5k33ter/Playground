@@ -2,7 +2,7 @@ name: Append Date
 
 on:
   schedule:
-    - cron: '0 6 * * *'  # 6:00 AM UTC every day
+    - cron: '0 9 * * *'  # 6:00 AM UTC every day
 
 jobs:
   append_date:
